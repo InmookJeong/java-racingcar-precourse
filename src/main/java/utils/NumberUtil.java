@@ -13,4 +13,11 @@ public class NumberUtil {
 		}
 		return false;
 	}
+
+	public static boolean isMoreThanMin(int inputNumber, int min) {
+		if(inputNumber > min) {
+			return true;
+		}
+		return false;
+	}
 }
