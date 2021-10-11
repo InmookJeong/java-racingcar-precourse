@@ -1,21 +1,35 @@
 package racinggame;
 
+import exception.InvalidInputException;
 import nextstep.utils.Console;
 
 public class Application {
     public static void main(String[] args) {
         // TODO 자동차 경주 게임 구현
         String inputCarNames = inputCarNames();
-        System.out.println("사용자가 입력한 자동차 이름 : " + inputCarNames);
+        try {
+            isCarNameValid(inputCarNames);
+        } catch (InvalidInputException e) {
+            System.out.println(e.getMessage());
+            inputCarNames = inputCarNames();
+        }
     }
 
-    // TODO : 기능 1. 자동차 이름 입력
+    // 기능 1. 자동차 이름 입력
     public static String inputCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         return Console.readLine();
     }
     
     // TODO : 기능 2. 자동차 이름이 5자 이하인지 체크
+    public static void isCarNameValid(String inputCarNames) {
+        String[] carNames = inputCarNames.split(",");
+        for(String carName : carNames) {
+            if(carName.length() > 5) {
+                throw new InvalidInputException("[ERROR] 자동차의 이름은 5자 이하만 가능합니다.");
+            }
+        }
+    }
 
     // TODO : 기능 3. 사용자 시도횟수 입력
     
