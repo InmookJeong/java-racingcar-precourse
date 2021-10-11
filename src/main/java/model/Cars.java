@@ -61,4 +61,21 @@ public class Cars {
 			throw new InvalidInputException("[ERROR] 자동차의 이름은 1자 이상 5자 이하만 가능합니다.");
 		}
 	}
+
+	public void startRace(Integer inputProcessCount) {
+		System.out.println("inputProcessCount : " + inputProcessCount);
+		for(int i=0; i<10; i++) {
+			for(Car car : cars) {
+				car.move();
+			}
+		}
+		printRacingStatus();
+	}
+
+	public void printRacingStatus() {
+		for(Car car : cars) {
+			System.out.println(car.toString());
+		}
+	}
+
 }

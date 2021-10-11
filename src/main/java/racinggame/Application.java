@@ -9,7 +9,7 @@ public class Application {
     public static void main(String[] args) {
         Cars cars = new Cars();
         Integer inputProcessCount = inputProcessCount();
-        System.out.println("count : " + inputProcessCount);
+        cars.startRace(inputProcessCount);
     }
 
     // 기능 3. 사용자 시도횟수 입력
@@ -41,7 +41,7 @@ public class Application {
         }
     }
     
-    // TODO : 기능 5. 임의의 숫자를 가져와 전진할 것인지 체크
+
     
     // TODO : 기능 7. 자동차 별 전진한 수 출력
     
