@@ -19,6 +19,10 @@ public class Car {
 		}
 	}
 
+	public boolean isFinished(Integer finishCount) {
+		return this.progressNo == finishCount;
+	}
+
 	@Override
 	public String toString() {
 		String move = "";

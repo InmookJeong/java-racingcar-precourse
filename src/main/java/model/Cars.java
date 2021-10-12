@@ -27,7 +27,7 @@ public class Cars {
 	public String getNames() {
 		String inputCarNames = inputCarNames();
 		try {
-			isCarNameValid(isEmptyCarName(inputCarNames));
+			isCarNameValid(isEmptyCarName(inputCarNames.trim()));
 		} catch (InvalidInputException e) {
 			System.out.println(e.getMessage());
 			getNames();
@@ -63,19 +63,40 @@ public class Cars {
 	}
 
 	public void startRace(Integer inputProcessCount) {
-		System.out.println("inputProcessCount : " + inputProcessCount);
-		for(int i=0; i<10; i++) {
-			for(Car car : cars) {
-				car.move();
-			}
+		System.out.println("\n실행결과");
+		while (getFinishedCar(inputProcessCount).size() == 0) {
+			moveCars();
+			printRacingStatus();
 		}
-		printRacingStatus();
+	}
+
+	public void moveCars() {
+		for(Car car : this.cars) {
+			car.move();
+		}
 	}
 
 	public void printRacingStatus() {
 		for(Car car : cars) {
 			System.out.println(car.toString());
 		}
+		System.out.println();
+	}
+
+	// 종료된 자동차가 있는지 확인
+	public List<Car> getFinishedCar(Integer inputProcessCount) {
+		List<Car> finishedCars = new ArrayList<Car>();
+		for(Car car : cars) {
+			finishedCars = addFinishedCar(finishedCars, car, inputProcessCount);
+		}
+		return finishedCars;
+	}
+	
+	public List<Car> addFinishedCar(List<Car> finishedCars, Car car, Integer inputProcessCount) {
+		if(car.isFinished(inputProcessCount)) {
+			finishedCars.add(car);
+		}
+		return finishedCars;
 	}
 
 }
