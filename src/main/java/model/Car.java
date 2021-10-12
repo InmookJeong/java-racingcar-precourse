@@ -11,6 +11,10 @@ public class Car {
 		this.progressNo = 0;
 	}
 
+	public String getName() {
+		return this.name;
+	}
+
 	// TODO : 기능 5. 임의의 숫자를 가져와 전진할 것인지 체크
 	public void move() {
 		int randomNo = Randoms.pickNumberInRange(0, 9);
@@ -23,6 +27,7 @@ public class Car {
 		return this.progressNo == finishCount;
 	}
 
+	// 기능 7. 자동차 별 전진한 수 출력
 	@Override
 	public String toString() {
 		String move = "";

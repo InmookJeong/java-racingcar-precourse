@@ -40,12 +40,4 @@ public class Application {
             throw new InvalidInputException(min + " 이상의 숫자를 입력해주세요.");
         }
     }
-    
-
-    
-    // TODO : 기능 7. 자동차 별 전진한 수 출력
-    
-    // TODO : 기능 8. 자동차 전진횟수 중 시도횟수와 일치하는 값이 있는지 확인
-    
-    // TODO : 기능 9. 일치하는 값이 있으면 시도횟수에 도달한 자동차의 명단 출력 후 게임 종료
 }

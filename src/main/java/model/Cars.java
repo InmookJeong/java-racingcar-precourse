@@ -30,7 +30,7 @@ public class Cars {
 			isCarNameValid(isEmptyCarName(inputCarNames.trim()));
 		} catch (InvalidInputException e) {
 			System.out.println(e.getMessage());
-			getNames();
+			inputCarNames = getNames();
 		}
 		return inputCarNames;
 	}
@@ -68,6 +68,7 @@ public class Cars {
 			moveCars();
 			printRacingStatus();
 		}
+		printFinishedCarNames(inputProcessCount);
 	}
 
 	public void moveCars() {
@@ -83,7 +84,8 @@ public class Cars {
 		System.out.println();
 	}
 
-	// 종료된 자동차가 있는지 확인
+	// 기능 8. 자동차 전진횟수 중 시도횟수와 일치하는 값이 있는지 확인
+	// 즉, 종료된 자동차가 있는지 확인
 	public List<Car> getFinishedCar(Integer inputProcessCount) {
 		List<Car> finishedCars = new ArrayList<Car>();
 		for(Car car : cars) {
@@ -97,6 +99,17 @@ public class Cars {
 			finishedCars.add(car);
 		}
 		return finishedCars;
+	}
+
+	// 기능 9. 일치하는 값이 있으면 시도횟수에 도달한 자동차의 명단 출력 후 게임 종료
+	public void printFinishedCarNames(Integer inputProcessCount) {
+		List<Car> finishedCars = getFinishedCar(inputProcessCount);
+		String finishedCarNames = "";
+		for(Car finishedCar : finishedCars) {
+			finishedCarNames += finishedCar.getName() + ",";
+		}
+		finishedCarNames = finishedCarNames.substring(0, finishedCarNames.lastIndexOf(","));
+		System.out.println("최종 우승자는 " + finishedCarNames + " 입니다.");
 	}
 
 }
